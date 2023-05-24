@@ -1,5 +1,4 @@
 import { Link, useRouteError } from "react-router-dom";
-import ActiveLink from "../ActiveLink/ActiveLink";
 
 export default function ErrorPage() {
   const error = useRouteError();
