@@ -3,11 +3,11 @@ import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Header = () => {
   return (
-    <nav className="flex justify-between">
+    <nav className="container mx-auto py-5 flex justify-between">
       <div>
         <h2>Logo</h2>
       </div>
-      <ul>
+      <ul className="flex gap-4">
         <ActiveLink to={"/"}>Home</ActiveLink>
         <ActiveLink to={"/about"}>About</ActiveLink>
         <ActiveLink to={"/booking"}>Booking</ActiveLink>
