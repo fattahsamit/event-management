@@ -23,4 +23,4 @@ The technologies used in this project:
 
 ## Live Host Link
 
-[Event Management](https://github.com/fattahsamit/event-management)
+[Event Management](https://event-master.netlify.app/)
