@@ -23,4 +23,4 @@ The technologies used in this project:
 
 ## Live Host Link
 
-[Toy Marketplace](https://github.com/fattahsamit/event-management)
+[Event Management](https://github.com/fattahsamit/event-management)
