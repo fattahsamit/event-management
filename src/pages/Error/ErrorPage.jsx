@@ -14,7 +14,7 @@ export default function ErrorPage() {
       <p className="text-amber-500 mb-3">
         <i>{error.statusText || error.message}</i>
       </p>
-      <button className="bg-sky-500 py-2 px-3 rounded-md hover:bg-sky-600 text-white font-medium max-w-fit">
+      <button className="btn btn-primary text-white">
         <Link to={"/"}>Get Back</Link>
       </button>
     </div>

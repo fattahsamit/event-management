@@ -1,5 +1,6 @@
 import React from "react";
 import ActiveLink from "../ActiveLink/ActiveLink";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -41,6 +42,9 @@ const Header = () => {
             <li>
               <ActiveLink to={"/services"}>Services</ActiveLink>
             </li>
+            <li>
+              <ActiveLink to={"/login"}>Login</ActiveLink>
+            </li>
           </ul>
         </div>
         <h2 className="btn btn-ghost text-primary normal-case text-2xl">
@@ -48,7 +52,7 @@ const Header = () => {
         </h2>
       </div>
 
-      <div className="navbar-end hidden lg:flex text-lg">
+      <div className="navbar-center hidden lg:flex text-lg">
         <ul className="menu menu-horizontal px-1">
           <li>
             <ActiveLink to={"/"}>Home</ActiveLink>
@@ -66,6 +70,12 @@ const Header = () => {
             <ActiveLink to={"/services"}>Services</ActiveLink>
           </li>
         </ul>
+      </div>
+
+      <div className="navbar-end hidden lg:flex text-lg">
+        <Link to={"/login"}>
+          <button className="btn btn-primary text-white">Login</button>
+        </Link>
       </div>
     </nav>
   );
