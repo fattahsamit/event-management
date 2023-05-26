@@ -9,7 +9,7 @@ export default function ErrorPage() {
       id="error-page"
       className="min-h-screen flex flex-col justify-center items-center"
     >
-      <h1 className="text-red-500 text-3xl font-semibold">{error.status}</h1>
+      <h1 className="text-primary text-3xl font-semibold">{error.status}</h1>
       <p className="my-2">Sorry, an unexpected error has occurred.</p>
       <p className="text-amber-500 mb-3">
         <i>{error.statusText || error.message}</i>

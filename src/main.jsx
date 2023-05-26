@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./components/Error/ErrorPage";
-import MainLayout from "./components/Layout/MainLayout";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Booking from "./components/Booking/Booking";
-import Contact from "./components/Contact/Contact";
-import Services from "./components/Services/Services";
+import ErrorPage from "./pages/Error/ErrorPage";
+import MainLayout from "./pages/Layout/MainLayout";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Booking from "./pages/Booking/Booking";
+import Contact from "./pages/Contact/Contact";
+import Services from "./pages/Services/Services";
 
 const router = createBrowserRouter([
   {
