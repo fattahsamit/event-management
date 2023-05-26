@@ -31,7 +31,7 @@ const Header = () => {
               <ActiveLink to={"/"}>Home</ActiveLink>
             </li>
             <li>
-              <ActiveLink to={"/about"}>About</ActiveLink>
+              <ActiveLink to={"/services"}>Services</ActiveLink>
             </li>
             <li>
               <ActiveLink to={"/booking"}>Booking</ActiveLink>
@@ -40,7 +40,7 @@ const Header = () => {
               <ActiveLink to={"/contact"}>Contact</ActiveLink>
             </li>
             <li>
-              <ActiveLink to={"/services"}>Services</ActiveLink>
+              <ActiveLink to={"/about"}>About</ActiveLink>
             </li>
             <li>
               <ActiveLink to={"/login"}>Login</ActiveLink>
@@ -58,7 +58,7 @@ const Header = () => {
             <ActiveLink to={"/"}>Home</ActiveLink>
           </li>
           <li>
-            <ActiveLink to={"/about"}>About</ActiveLink>
+            <ActiveLink to={"/services"}>Services</ActiveLink>
           </li>
           <li>
             <ActiveLink to={"/booking"}>Booking</ActiveLink>
@@ -67,7 +67,7 @@ const Header = () => {
             <ActiveLink to={"/contact"}>Contact</ActiveLink>
           </li>
           <li>
-            <ActiveLink to={"/services"}>Services</ActiveLink>
+            <ActiveLink to={"/about"}>About</ActiveLink>
           </li>
         </ul>
       </div>
