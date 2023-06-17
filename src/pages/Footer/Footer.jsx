@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral text-neutral-content flex flex-col justify-around min-h-[50vh]">
-      <section className="footer container mx-auto m-10">
+    <footer className="bg-neutral text-neutral-content flex flex-col justify-around">
+      <section className="footer container mx-auto m-8">
         <div>
           <span className="footer-title text-xl">Event Management</span>
           <p className="w-1/2">
