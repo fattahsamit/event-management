@@ -1,8 +1,8 @@
 
 const Login = () => {
   return (
-    <div className="flex items-center justify-center mt-10 bg-gray-100">
-      <div className="bg-white p-8 shadow-md rounded-md">
+    <div className=" max-w-7xl w-full mx-auto mt-10 bg-gray-100">
+      <div className="bg-white p-8 shadow-md rounded-md w-72 md:w-92 mx-auto">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form>
           <div className="mb-4">
@@ -12,6 +12,7 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#0B84BA]"
               placeholder="Enter your email"
             />
@@ -23,6 +24,7 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#0B84BA]"
               placeholder="Enter your password"
             />
