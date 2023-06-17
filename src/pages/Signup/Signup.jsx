@@ -1,13 +1,38 @@
 /* eslint-disable react/no-unescaped-entities */
-import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Login = () => {
-  return (
-    <div className=" max-w-7xl w-full mx-auto mt-10 bg-gray-100 mb-10">
+
+const Signup = () => {
+    return (
+        <div className=" max-w-7xl w-full mx-auto mt-10 bg-gray-100 mb-10">
       <div className="bg-white p-8 shadow-md rounded-md w-72 md:w-3/12 mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
+        <h2 className="text-2xl font-bold mb-4">Sign-up</h2>
         <form>
+          <div className="mb-4">
+            <label htmlFor="name" className="block font-medium mb-1">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#0B84BA]"
+              placeholder="Enter Your Name"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="photo" className="block font-medium mb-1">
+              Photo URL
+            </label>
+            <input
+              type="text"
+              id="photo"
+              name="photo"
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#0B84BA]"
+              placeholder="Enter Photo URL"
+            />
+          </div>
           <div className="mb-4">
             <label htmlFor="email" className="block font-medium mb-1">
               Email
@@ -17,7 +42,7 @@ const Login = () => {
               id="email"
               name="email"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#0B84BA]"
-              placeholder="Enter your email"
+              placeholder="Enter Your E-mail"
             />
           </div>
           <div className="mb-4">
@@ -41,9 +66,9 @@ const Login = () => {
         </form>
 
         <p className="text-md text-start text-gray-600 mt-4">
-            Don't have an account?{" "}
-            <Link to="/signup" className="text-cyan-500 hover:underline">
-              Sign Up
+            Already have an account?{" "}
+            <Link to="/login" className="text-cyan-500 hover:underline">
+              Login
             </Link>
           </p>
 
@@ -65,7 +90,7 @@ const Login = () => {
 
       </div>
     </div>
-  );
+    );
 };
 
-export default Login;
+export default Signup;
