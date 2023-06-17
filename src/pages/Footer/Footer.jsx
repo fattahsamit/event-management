@@ -1,10 +1,6 @@
 const Footer = () => {
   return (
-<<<<<<< HEAD
-    <footer className="bg-neutral text-neutral-content flex flex-col justify-around">
-=======
     <footer className="bg-neutral text-neutral-content flex flex-col justify-around ">
->>>>>>> 82698155adf68be404de36c5b7ff685553c78869
       <section className="footer container mx-auto m-8">
         <div>
           <span className="footer-title text-xl">Event Management</span>
