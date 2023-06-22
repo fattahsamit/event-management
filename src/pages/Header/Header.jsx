@@ -58,7 +58,7 @@ const Header = () => {
             </li>
             {
               user ? <li>
-              <ActiveLink to={"/login"}>Log Out</ActiveLink>
+              <ActiveLink onClick={handleLogOut} to={"/login"}>Log Out</ActiveLink>
             </li> : 
             <li>
             <ActiveLink to={"/login"}>Login</ActiveLink>
