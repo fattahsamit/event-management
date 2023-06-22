@@ -4,6 +4,8 @@ import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 const Signup = () => {
@@ -32,6 +34,17 @@ const Signup = () => {
               displayName: name,
               photoURL: photo
             })
+
+            toast.success('Sign Up Successful', {
+              position: "top-center",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
 
             logOut()
               .then()
@@ -144,6 +157,18 @@ const Signup = () => {
           </div>
 
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
     );
 };
