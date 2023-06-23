@@ -66,9 +66,14 @@ const Header = () => {
             }
           </ul>
         </div>
-        <h2 className="btn btn-ghost text-primary normal-case text-2xl">
+        <h2 className="btn btn-ghost text-primary normal-case text-xl md:text-2xl">
           Event Management
         </h2>
+        {
+          user && <div className="w-10 h-10 rounded-full mr-4 tooltip tooltip-bottom tooltip-success md:hidden block" data-tip={user?.displayName}>
+                <img className='rounded-full w-10 h-10' src={user?.photoURL} />
+          </div>
+        }
       </div>
 
       <div className="navbar-center hidden lg:flex text-lg">
@@ -92,7 +97,7 @@ const Header = () => {
       </div>
       
       {
-          user && <div className="w-10 h-10 rounded-full mr-4 tooltip tooltip-bottom tooltip-success" data-tip={user?.displayName}>
+          user && <div className="w-10 h-10 rounded-full mr-4 tooltip tooltip-bottom tooltip-success hidden md:block" data-tip={user?.displayName}>
                 <img className='rounded-full w-10 h-10' src={user?.photoURL} />
           </div>
       }
