@@ -23,4 +23,5 @@ The technologies used in this project:
 
 ## Live Host Link
 
-[Event Management](https://event-master.netlify.app/)
+Live Site Link: [Event Management](https://event-master.netlify.app/)
+Live Site Link: [Event Management](https://event-management-390ab.web.app)
