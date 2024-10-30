@@ -1,14 +1,82 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
+import { updateProfile } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 const Signup = () => {
+
+    const {logOut, createUser, googleSignIn} = useContext(AuthContext)
+
+    const handleSignUp = (e) => {
+
+        e.preventDefault()
+
+        const form = e.target
+
+        const name = form.name.value
+        const photo = form.photo.value
+        const email = form.email.value
+        const password = form.password.value
+
+        createUser(email, password)
+          .then(result => {
+
+            const loggedUser = result.user
+            console.log(loggedUser)
+            form.reset()
+
+            updateProfile(loggedUser, {
+              displayName: name,
+              photoURL: photo
+            })
+
+            toast.success('Sign Up Successful', {
+              position: "top-center",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
+
+            logOut()
+              .then()
+              .catch(error => {
+                console.error(error.message)
+              })
+
+          })
+          .catch(error => {
+            console.error(error.message)
+          })
+
+    }
+
+    const handleGoogleSignIn = () => {
+
+      googleSignIn()
+        .then(result => {
+          const loggedUser = result.user 
+          console.log(loggedUser)
+        })
+        .catch(error => {
+          console.error(error.message)
+        })
+
+    }
+
     return (
         <div className=" max-w-7xl w-full mx-auto mt-10 bg-gray-100 mb-10">
       <div className="bg-white p-8 shadow-md rounded-md w-72 md:w-3/12 mx-auto">
         <h2 className="text-2xl font-bold mb-4">Sign-up</h2>
-        <form>
+        <form onSubmit={handleSignUp}>
           <div className="mb-4">
             <label htmlFor="name" className="block font-medium mb-1">
               Name
@@ -80,7 +148,7 @@ const Signup = () => {
 
           <div className="mt-5 w-full flex items-center">
             <button
-            
+              onClick={handleGoogleSignIn}
               className="rounded-md bg-red-500 hover:bg-red-600 text-white w-full px-3 py-2 inline-flex gap-5 md:gap-10"
             >
               <FaGoogle size={24} />
@@ -89,6 +157,18 @@ const Signup = () => {
           </div>
 
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
     );
 };

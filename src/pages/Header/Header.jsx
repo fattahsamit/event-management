@@ -1,8 +1,22 @@
-import React from "react";
+import { useContext } from "react";
 import ActiveLink from "../ActiveLink/ActiveLink";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 
 const Header = () => {
+
+  const {user, logOut} = useContext(AuthContext)
+
+  const handleLogOut = () => {
+
+    logOut()
+      .then()
+      .catch(error => {
+        console.log(error)
+      })
+
+  }
+
   return (
     <nav className="navbar bg-base-100 container mx-auto sticky top-0 z-50">
       <div className="navbar-start">
@@ -42,14 +56,24 @@ const Header = () => {
             <li>
               <ActiveLink to={"/about"}>About</ActiveLink>
             </li>
+            {
+              user ? <li>
+              <ActiveLink onClick={handleLogOut} to={"/login"}>Log Out</ActiveLink>
+            </li> : 
             <li>
-              <ActiveLink to={"/login"}>Login</ActiveLink>
-            </li>
+            <ActiveLink to={"/login"}>Login</ActiveLink>
+          </li>
+            }
           </ul>
         </div>
-        <h2 className="btn btn-ghost text-primary normal-case text-2xl">
+        <h2 className="btn btn-ghost text-primary normal-case text-xl md:text-2xl">
           Event Management
         </h2>
+        {
+          user && <div className="w-10 h-10 rounded-full mr-4 tooltip tooltip-bottom tooltip-success md:hidden block" data-tip={user?.displayName}>
+                <img className='rounded-full w-10 h-10' src={user?.photoURL} />
+          </div>
+        }
       </div>
 
       <div className="navbar-center hidden lg:flex text-lg">
@@ -71,11 +95,30 @@ const Header = () => {
           </li>
         </ul>
       </div>
+      
+      {
+          user && <div className="w-10 h-10 rounded-full mr-4 tooltip tooltip-bottom tooltip-success hidden md:block" data-tip={user?.displayName}>
+                <img className='rounded-full w-10 h-10' src={user?.photoURL} />
+          </div>
+      }
 
-      <div className="navbar-end hidden lg:flex text-lg">
-        <Link to={"/login"}>
-          <button className="btn btn-primary text-white">Login</button>
-        </Link>
+      <div className="flex items-center justify-between"> 
+
+        {user ?  <div onClick={handleLogOut} className="navbar-end hidden lg:flex text-lg  w-full">
+          <Link to={"/login"}>
+            <button className="btn btn-primary text-white">Log Out</button>
+          </Link>
+        </div> 
+        
+        :
+        
+        <div className="navbar-end hidden lg:flex text-lg mx-4 w-full">
+          <Link to={"/login"}>
+            <button className="btn btn-primary text-white">Log In</button>
+          </Link>
+        </div>
+        }
+
       </div>
     </nav>
   );
