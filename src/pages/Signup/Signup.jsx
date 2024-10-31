@@ -4,76 +4,67 @@ import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders/AuthProviders";
 import { updateProfile } from "firebase/auth";
-import { ToastContainer, toast } from 'react-toastify';
-
-
+import { ToastContainer, toast } from "react-toastify";
 
 const Signup = () => {
+  const { logOut, createUser, googleSignIn } = useContext(AuthContext);
 
-    const {logOut, createUser, googleSignIn} = useContext(AuthContext)
+  const handleSignUp = (e) => {
+    e.preventDefault();
 
-    const handleSignUp = (e) => {
+    const form = e.target;
 
-        e.preventDefault()
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
-        const form = e.target
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        form.reset();
 
-        const name = form.name.value
-        const photo = form.photo.value
-        const email = form.email.value
-        const password = form.password.value
+        updateProfile(loggedUser, {
+          displayName: name,
+          photoURL: photo,
+        });
 
-        createUser(email, password)
-          .then(result => {
+        toast.success("Sign Up Successful", {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
 
-            const loggedUser = result.user
-            console.log(loggedUser)
-            form.reset()
+        logOut()
+          .then()
+          .catch((error) => {
+            console.error(error.message);
+          });
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
-            updateProfile(loggedUser, {
-              displayName: name,
-              photoURL: photo
-            })
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
-            toast.success('Sign Up Successful', {
-              position: "top-center",
-              autoClose: 1500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              });
-
-            logOut()
-              .then()
-              .catch(error => {
-                console.error(error.message)
-              })
-
-          })
-          .catch(error => {
-            console.error(error.message)
-          })
-
-    }
-
-    const handleGoogleSignIn = () => {
-
-      googleSignIn()
-        .then(result => {
-          const loggedUser = result.user 
-          console.log(loggedUser)
-        })
-        .catch(error => {
-          console.error(error.message)
-        })
-
-    }
-
-    return (
-        <div className=" max-w-7xl w-full mx-auto mt-10 bg-gray-100 mb-10">
+  return (
+    <div className="max-w-8xl w-full mx-auto mt-10 bg-gray-100 mb-10">
       <div className="bg-white p-8 shadow-md rounded-md w-72 md:w-3/12 mx-auto">
         <h2 className="text-2xl font-bold mb-4">Sign-up</h2>
         <form onSubmit={handleSignUp}>
@@ -129,33 +120,32 @@ const Signup = () => {
             type="submit"
             className="w-full bg-[#0B84BA] text-white font-medium py-2 rounded hover:bg-blue-600"
           >
-            Sign In
+            Sign Up
           </button>
         </form>
 
         <p className="text-md text-start text-gray-600 mt-4">
-            Already have an account?{" "}
-            <Link to="/login" className="text-cyan-500 hover:underline">
-              Login
-            </Link>
-          </p>
+          Already have an account?{" "}
+          <Link to="/login" className="text-cyan-500 hover:underline">
+            Login
+          </Link>
+        </p>
 
-          <div className="flex items-center justify-center mt-4">
-            <hr className="w-1/2 border-gray-300" />
-            <p className="mx-4 text-gray-500">Or</p>
-            <hr className="w-1/2 border-gray-300" />
-          </div>
+        <div className="flex items-center justify-center mt-4">
+          <hr className="w-1/2 border-gray-300" />
+          <p className="mx-4 text-gray-500">Or</p>
+          <hr className="w-1/2 border-gray-300" />
+        </div>
 
-          <div className="mt-5 w-full flex items-center">
-            <button
-              onClick={handleGoogleSignIn}
-              className="rounded-md bg-red-500 hover:bg-red-600 text-white w-full px-3 py-2 inline-flex gap-5 md:gap-10"
-            >
-              <FaGoogle size={24} />
-              <span>Sign in with Google</span>
-            </button>
-          </div>
-
+        <div className="mt-5 w-full flex items-center">
+          <button
+            onClick={handleGoogleSignIn}
+            className="rounded-md bg-red-500 hover:bg-red-600 text-white w-full px-3 py-2 flex justify-center gap-3 md:gap-5"
+          >
+            <FaGoogle size={24} />
+            <span>Sign Up with Google</span>
+          </button>
+        </div>
       </div>
       <ToastContainer
         position="top-center"
@@ -170,7 +160,7 @@ const Signup = () => {
         theme="light"
       />
     </div>
-    );
+  );
 };
 
 export default Signup;
